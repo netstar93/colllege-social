@@ -1,0 +1,36 @@
+<% include layout.ejs %> 
+<div class="main-container">
+<div class=" home-left">
+<div class="title">Notice Board</div>
+<div class="content">
+    <p>Welcome to College Social network.</p>
+    <p>Login and proceed with your account and fun.</p>
+</div>
+
+</div>
+<div class="home-right">
+  <div class="title"><img src="/images/psit-logo.jpg" alt="Login " width="250px" /></div>
+  <div class="content">
+  <form class="form login-form" method="post" action ="/login">
+  <div class="form-group">
+    <label>User ID/Mobile  Number</label>
+    <input type="text" name="userid" class="input-text" />
+  </div>
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" name="password" class="input-text" />
+  </div>
+
+  <div class="form-group">
+    <button type="submit" >Let me IN</button>
+  </div>
+  </form>
+  <div class="extra">
+  <a href= "/register"><button >Register</button></a>
+  <a href= "/forgot"><button >Forgot Password</button></a>
+  </div>
+  </div>
+</div>
+
+</div>
