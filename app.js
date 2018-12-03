@@ -5,6 +5,7 @@ var http = require('http');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var reload = require('reload');
+var expressSession = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -23,7 +24,11 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(expressSession({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/', studentRouter);

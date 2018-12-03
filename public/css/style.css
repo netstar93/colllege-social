@@ -40,6 +40,20 @@ a {
 .home-right{
   float:right;
 }
-
-.content {   
+.full-page .area{
+    background-color: #ffff;
+    font-size: 20px;
+    display: inline-block;
+    padding:10px;
+}
+.full-page .my-profile{
+    width: 20%;
+    float: left;
+}
+.full-page .newsfeed{
+    width: 50%;
+}
+.full-page .chatbox{
+    width: 30%;
+    float: right;
 }

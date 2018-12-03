@@ -16,7 +16,18 @@ router.post('/register', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-
+    var data = req.body;
+    student.findOne({'mobile_number' : data.mobile_number , 'password' : data.password} , function(err,student){
+        if(err) console.log(err);
+        if(student.name == '' || student.name ==  'undefined') {
+            res.render('index' , {error : "Incorrect Login Credentials"});
+        }else{
+            req.session.student = student;
+            req.session .save();
+            console.log(student);
+            res.render('student/home' , {title : 'Welcome '+student.name, student : student });
+        }
+    });
 });
 
 module.exports = router;
