@@ -15,9 +15,9 @@ a {
   padding-top: 20px;
 }
 .main-container {
-  width: 100%;
-  min-height: 800px;
+  /* min-height: 800px; */
   background-color: azure;
+  padding: 10px;
 }
 .main-container  .home-left{
   width: 70%;
@@ -32,6 +32,26 @@ a {
   min-height: 800px;
   font-size: 18px;
 }
+nav.menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.menu ul li{
+  float : left;
+  padding: 15px;
+}
+.menu ul a{
+  text-decoration: none;
+  color : #ffff;
+  text-align: center;
+   padding: 14px 16px;
+}
+.menu li a:hover{
+  background-color: lightseagreen;
+}
 .home-left .title , .home-right .title{
   font-size: 20px;
   font-weight: 700;
@@ -40,20 +60,58 @@ a {
 .home-right{
   float:right;
 }
+ul.list-none {
+  list-style: none;
+  padding: 10px;
+}
+ul.list-none i {
+  padding:5px;
+}
+.post-wrapper {
+  margin: 11px;
+}
+
+.post-wrapper .header .image {
+  float: left;
+}
+
+.post-wrapper .header .name {
+  float: right;
+}
+.post-wrapper .message {
+font-size : 16px;
+}
+.post-feed{
+  padding-top: 15px;
+  background-color: beige;
+}
 .full-page .area{
     background-color: #ffff;
     font-size: 20px;
     display: inline-block;
-    padding:10px;
+    padding:5px;
+    margin:5px;
+    border: 1px solid green;
+    float: left;
 }
 .full-page .my-profile{
     width: 20%;
-    float: left;
+}
+.full-page :after {
+  content: "";
+  display: table;
+  clear: both;
 }
 .full-page .newsfeed{
     width: 50%;
 }
 .full-page .chatbox{
-    width: 30%;
-    float: right;
+    width: 24%;
+}
+.post-form textarea{
+  width: 100%;
+  min-height: 100px;
+}
+.full-page .area .title{
+  text-align: center;
 }

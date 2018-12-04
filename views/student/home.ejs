@@ -3,29 +3,44 @@
     <div class="full-page">
         <div class="area my-profile">
             <div class="title">My Profile</div>
-            <div class="content">
+            <div class="message">
                 <img class="profileImg img-circle" src="" />
-                <ul>
-                    <li><span>Icon</span><span class="value"><%= student.name %></span></li>
-                    <li><span>Icon</span><span class="value"><%= student.mobile_number %></span></li>
-                    <li><span>Icon</span><span class="value">mumbai</span></li>
-                    <li><span>Icon</span><span class="value">15 -08-1990</span></li>
-                    <li><span>Icon</span><span class="value"><%= student.email_id %></span></li>
+                <ul class="list-none">
+                    <li><span><i class="fa fa fa-pencil"> <span class="value"><%= student.name %></span></i></span></li>
+                    <li><span><i class="fa fa-lg fa-mobile"><span class="value"><%= student.mobile_number %></i></span></li>
+                    <li><span><i class="fa fa-lg fa-home"><span class="value">mumbai</span></i></span></li>
+                    <li><span><i class="fa fa-lg fa-calendar-times-o"></i><span class="value">15 -08-1990</span></span></li>
+                    <li><span><i class="fa fa-lg fa-mercury"></i><span class="value"><%= student.email_id %></span></span></li>
                 </ul>
             </div>
         </div>
         <div class="area newsfeed">
-            <div class="post-form"><label>Post</label><textarea cols="10"></textarea></div>
-            <p class="options"><span>Photo</span><img src=""/></p>
-            <button class="btn ">Post</button>
+            <form class="form " name="post-form" action="/postSave" method="post">
+                <div class="post-form"><label>Post</label><textarea name="post"></textarea></div>                                       
+            <div class="actions">
+                <p class="options"><span>Photo</span><i class="fa fa-lg fa-camera-retro"></i></p>
+                <button class="btn" type="submit">Post</button>
+             </div>
+             </form>
+             <% if(student.posts.length > 0 )  { %>
+             <div class="post-feed">
+             <%  student.posts .forEach(function( data ) { %>
+             <div class="post-wrapper">
+                <div class="header">
+                    <span class="image"><img src="" alt="image"/> </span><span class="name"><%=  %></span>                 
+                </div>
+                <div class="message">
+                        <%= data.post %>
+                </div>
+             </div>
+             <% })  %>
+             </div>
+             <% } %>
         </div>
         <div class="area chatbox">
             <div class="title">Online Users</div>
             <div class="list">
                 <ul>
-                    <li>Nck</li>
-                    <li>Nck</li>
-                    <li>Nck</li>
                     <li>Nck</li>
                     <li>Nck</li>
                     <li>Nck</li>

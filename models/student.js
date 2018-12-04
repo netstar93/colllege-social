@@ -16,7 +16,12 @@ var schema = new mongoose.Schema({
     year:String
 });
 schema.add({roll_no : {type:Number,default: 1 }});
-
+schema.add({
+    posts: [{
+            type :  mongoose.Schema.Types.ObjectId,
+            ref : 'Posts'
+    }]
+})
 // schema.post('save', function(next) {
 //     var doc = this;
 //     schema.findByIdAndUpdate({_id : this.id}, {$inc: { roll_no: 22} }, function(error, counter)   {
