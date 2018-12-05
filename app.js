@@ -34,15 +34,13 @@ app.use(expressSession({
     saveUninitialized: true
 }));
 
-app.use('/users', usersRouter);
-app.use('/', studentRouter);
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  // app.locals.message = req.flash();
-  // _log(app.locals.message.success);
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
   res.locals.message = req.flash();
-  next(createError(404));
+  next();
+  //next(createError(404));
 });
 
 // error handler
@@ -55,6 +53,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.use('/users', usersRouter);
+app.use('/', studentRouter);
 
 app.set('port', process.env.PORT || 8000);
 

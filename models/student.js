@@ -8,7 +8,8 @@ var schema = new mongoose.Schema({
     name : String,
     dob : String,
     mobile_number :{
-        type: Number
+        type: Number,
+        required : "Mobile number is required"
         },
     password : String,
     email_id :String,
@@ -16,6 +17,7 @@ var schema = new mongoose.Schema({
     year:String
 });
 schema.add({roll_no : {type:Number,default: 1 }});
+schema.add({image : {type:String }});
 schema.add({
     posts: [{
             type :  mongoose.Schema.Types.ObjectId,

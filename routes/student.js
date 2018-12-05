@@ -1,7 +1,20 @@
 var express = require('express');
 var router = express.Router();
+
 var student = require('../models/student');
 var postModel = require('../models/post');
+
+var multer = require('multer');
+var path = require('path');
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+});
+var upload = multer({storage: storage});
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -13,11 +26,13 @@ router.get('/register', function (req, res, next) {
   });
 });
 
-router.post('/register', function (req, res, next) {
+router.post('/register',  upload.single('image') , function (req, res, next) {
   var data = req.body;
+  data.image = req.file.filename;
   var stu = new student(data);
   stu.save(function (err) {
     if (err) console.log(err);
+    req.flash('success' , 'Account created')
     res.redirect('/');
   });
 });
@@ -34,7 +49,6 @@ router.post('/', function (req, res, next) {
       res.redirect('/');
     } else {
       req.flash('success', "Login Successful");
-      res.locals.message = "dfdfjdhfjd";
       req.session.student = student;
       req.session.save();
       res.redirect('dashboard');
